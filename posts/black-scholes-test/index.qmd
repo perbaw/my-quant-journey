@@ -1,0 +1,35 @@
+---
+title: Black-Scholes Test
+author: Prabhav Shetty
+date: 2026-05-22
+categories:
+  - derivatives
+  - options
+  - code
+---
+
+## The Concept 
+The classic Black-Scholes-Merton partial differential equation solves for a derivative's price under strict assumptions: $$ \frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + r S \frac{\partial V}{\partial S} - rV = 0 $$ Let's quickly plot the option Greeks dynamically using Python to see how Delta changes relative to asset price.
+
+## Python Implementation
+
+```{python}
+import numpy as np 
+import matplotlib.pyplot as plt 
+from scipy.stats import norm 
+
+def bs_delta(S, K, T, r, sigma):
+	d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+	return norm.cdf(d1) 
+	
+S_space = np.linspace(80, 120, 100) 
+deltas = [bs_delta(S, K=100, T=0.5, r=0.05, sigma=0.2) for S in S_space] 
+
+plt.plot(S_space, deltas, label='Delta', color='blue') 
+plt.axvline(100, color='red', linestyle='--', label='Strike (K=100)')
+plt.title("Option Delta vs Asset Price") 
+plt.xlabel("Stock Price")
+plt.ylabel("Delta") 
+plt.legend() 
+plt.show()
+```

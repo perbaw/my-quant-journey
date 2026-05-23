@@ -1,0 +1,19 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: instagram
+      text: Instagram
+      href: https://instagram.com/prabhav.shetty
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/prabhavshetty
+    - icon: github
+      text: Github
+      href: https://github.com/perbaw
+
+---
+
+About this blog

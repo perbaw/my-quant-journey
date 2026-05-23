@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "posts/*/*.qmd"
+    - "!posts/*/.obsidian/"
+website:
+  description: "Documenting my journey through quantitative finance literature."
+  site-url: https://your-website-url.example.com # you must change this appropriately for RSS feeds to work properly
+  title: "It's All Greeks to Me"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/perbaw
+      - icon: linkedin
+        href: https://linkedin.com/in/prabhavshetty
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true                  # Generates a clean Table of Contents on the right
+    toc-depth: 3
+    code-fold: true            # Collapses your code snippets by default so the math flows smoothly
+    # code-tools: true           # Adds a button for readers to see the raw code
+    html-math-method: mathjax  # The absolute best way to render complex LaTeX flawlessly
+    highlight-style: github
