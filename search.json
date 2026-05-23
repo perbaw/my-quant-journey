@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/black-scholes-test/index.html",
+    "href": "posts/black-scholes-test/index.html",
+    "title": "Black-Scholes",
+    "section": "",
+    "text": "The classic Black-Scholes-Merton partial differential equation solves for a derivative’s price under strict assumptions: \\[ \\frac{\\partial V}{\\partial t} + \\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 V}{\\partial S^2} + r S \\frac{\\partial V}{\\partial S} - rV = 0 \\] Let’s quickly plot the option Greeks dynamically using Python to see how Delta changes relative to asset price."
+  },
+  {
+    "objectID": "posts/black-scholes-test/index.html#the-concept",
+    "href": "posts/black-scholes-test/index.html#the-concept",
+    "title": "Black-Scholes",
+    "section": "",
+    "text": "The classic Black-Scholes-Merton partial differential equation solves for a derivative’s price under strict assumptions: \\[ \\frac{\\partial V}{\\partial t} + \\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 V}{\\partial S^2} + r S \\frac{\\partial V}{\\partial S} - rV = 0 \\] Let’s quickly plot the option Greeks dynamically using Python to see how Delta changes relative to asset price."
+  },
+  {
+    "objectID": "posts/black-scholes-test/index.html#python-implementation",
+    "href": "posts/black-scholes-test/index.html#python-implementation",
+    "title": "Black-Scholes",
+    "section": "Python Implementation",
+    "text": "Python Implementation\n\n\nCode\nimport numpy as np \nimport matplotlib.pyplot as plt \nfrom scipy.stats import norm \n\ndef bs_delta(S, K, T, r, sigma):\n    d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))\n    return norm.cdf(d1) \n    \nS_space = np.linspace(80, 120, 100) \ndeltas = [bs_delta(S, K=100, T=0.5, r=0.05, sigma=0.2) for S in S_space] \n\nplt.plot(S_space, deltas, label='Delta', color='blue') \nplt.axvline(100, color='red', linestyle='--', label='Strike (K=100)')\nplt.title(\"Option Delta vs Asset Price\") \nplt.xlabel(\"Stock Price\")\nplt.ylabel(\"Delta\") \nplt.legend() \nplt.show()"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "It’s All Greeks to Me",
+    "section": "",
+    "text": "Black-Scholes Test\n\n\n\nderivatives\n\noptions\n\ncode\n\n\n\n\n\n\n\n\n\nMay 22, 2026\n\n\nPrabhav Shetty\n\n\n\n\n\n\n\n\n\n\n\n\nPortfolio Selection\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2026\n\n\nPrabhav Shetty\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMay 19, 2026\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/markovitz-portfolio-selection/index.html",
+    "href": "posts/markovitz-portfolio-selection/index.html",
+    "title": "Portfolio Selection",
+    "section": "",
+    "text": "Portfolio Selection\nHarry Markowitz\nThe Journal of Finance, Vol. 7, No. 1. (Mar., 1952), pp. 77-91.\nLink"
+  },
+  {
+    "objectID": "posts/markovitz-portfolio-selection/index.html#paper-details",
+    "href": "posts/markovitz-portfolio-selection/index.html#paper-details",
+    "title": "Portfolio Selection",
+    "section": "",
+    "text": "Portfolio Selection\nHarry Markowitz\nThe Journal of Finance, Vol. 7, No. 1. (Mar., 1952), pp. 77-91.\nLink"
+  }
+]

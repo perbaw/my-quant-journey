@@ -1,9 +1,0 @@
-# Quarto internal folders
-/.quarto/
-/_site/
-
-# Obsidian system folder
-.obsidian/
-
-# Python env / cache artifacts
-/venv

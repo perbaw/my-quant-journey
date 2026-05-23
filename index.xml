@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>It&#39;s All Greeks to Me</title>
+<link>https://your-website-url.example.com/</link>
+<atom:link href="https://your-website-url.example.com/index.xml" rel="self" type="application/rss+xml"/>
+<description>Documenting my journey through quantitative finance literature.</description>
+<generator>quarto-1.9.37</generator>
+<lastBuildDate>Fri, 22 May 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Black-Scholes</title>
+  <dc:creator>Prabhav Shetty</dc:creator>
+  <link>https://your-website-url.example.com/posts/black-scholes-test/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="the-concept" class="level2">
+<h2 class="anchored" data-anchor-id="the-concept">The Concept</h2>
+<p>The classic Black-Scholes-Merton partial differential equation solves for a derivative’s price under strict assumptions: <img src="https://latex.codecogs.com/png.latex?%20%5Cfrac%7B%5Cpartial%20V%7D%7B%5Cpartial%20t%7D%20+%20%5Cfrac%7B1%7D%7B2%7D%5Csigma%5E2%20S%5E2%20%5Cfrac%7B%5Cpartial%5E2%20V%7D%7B%5Cpartial%20S%5E2%7D%20+%20r%20S%20%5Cfrac%7B%5Cpartial%20V%7D%7B%5Cpartial%20S%7D%20-%20rV%20=%200%20"> Let’s quickly plot the option Greeks dynamically using Python to see how Delta changes relative to asset price.</p>
+</section>
+<section id="python-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="python-implementation">Python Implementation</h2>
+<div id="9296471c" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np </span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt </span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> scipy.stats <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> norm </span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> bs_delta(S, K, T, r, sigma):</span>
+<span id="cb1-6">    d1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (np.log(S <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> K) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> (r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> sigma <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> T) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (sigma <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.sqrt(T))</span>
+<span id="cb1-7">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> norm.cdf(d1) </span>
+<span id="cb1-8">    </span>
+<span id="cb1-9">S_space <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>) </span>
+<span id="cb1-10">deltas <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [bs_delta(S, K<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, T<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, r<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>, sigma<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> S <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> S_space] </span>
+<span id="cb1-11"></span>
+<span id="cb1-12">plt.plot(S_space, deltas, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Delta'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'blue'</span>) </span>
+<span id="cb1-13">plt.axvline(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'red'</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'--'</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Strike (K=100)'</span>)</span>
+<span id="cb1-14">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Option Delta vs Asset Price"</span>) </span>
+<span id="cb1-15">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Stock Price"</span>)</span>
+<span id="cb1-16">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Delta"</span>) </span>
+<span id="cb1-17">plt.legend() </span>
+<span id="cb1-18">plt.show()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/black-scholes-test/index_files/figure-html/cell-2-output-1.png" width="589" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>derivatives</category>
+  <category>options</category>
+  <category>code</category>
+  <guid>https://your-website-url.example.com/posts/black-scholes-test/</guid>
+  <pubDate>Fri, 22 May 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Portfolio Selection</title>
+  <dc:creator>Prabhav Shetty</dc:creator>
+  <link>https://your-website-url.example.com/posts/markovitz-portfolio-selection/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="paper-details" class="level2">
+<h2 class="anchored" data-anchor-id="paper-details">Paper Details</h2>
+<p>Portfolio Selection<br>
+Harry Markowitz<br>
+The Journal of Finance, Vol. 7, No.&nbsp;1. (Mar., 1952), pp.&nbsp;77-91.<br>
+<a href="http://links.jstor.org/sici?sici=0022-1082%28195203%297%3A1%3C77%3APS%3E2.0.CO%3B2-1">Link</a></p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/markovitz-portfolio-selection/</guid>
+  <pubDate>Fri, 22 May 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Welcome To My Blog</title>
+  <dc:creator>Tristan O&#39;Malley</dc:creator>
+  <link>https://your-website-url.example.com/posts/welcome/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This is the first post in a Quarto blog. Welcome!</p>
+<p><img src="https://your-website-url.example.com/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
+<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <guid>https://your-website-url.example.com/posts/welcome/</guid>
+  <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
